@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+    <title>Portfólio</title>
+</head>
+
+<body>
+
+    <div class="particulas"></div>
+
+    <nav class="navegacao">
+        <ul class="menu">
+            <li>
+                <a href="#inicio" class="link">Início</a>
+            </li>
+            <li>
+                <a href="#sobre" class="link">Sobre</a>
+            </li>
+            <li>
+                <a href="#projetos" class="link">Projetos</a>
+            </li>
+            <li>
+                <a href="#contato" class="link">Contato</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main id="inicio" class="cabecalho">
+        <img src="src/images/beto.jpeg" alt="Foto" class="foto-perfil">
+        <h1>Beto Farias</h1>
+        <p class="cabecalho-sub-titulo">Desenvolvedor Front End</p>
+    </main>
+
+    <section id="sobre" class="sobre">
+        <h2 class="sobre-titulo">Sobre Mim</h2>
+        <div class="sobre-caixa">
+            <p class="descricao">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea mollitia officia nisi
+                ratione
+                cumque iure, debitis incidunt nihil reiciendis laborum aspernatur laudantium, recusandae neque aut
+                repellendus modi animi dicta perspiciatis?</p>
+        </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+        <h2 class="projetos-titulo">Meus Projetos</h2>
+        <div class="projetos-caixa">
+            <div class="projetos-card">
+                <img src="src/images/site tematico dbz.png" alt="Imagem DBZ" class="projetos-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="informacao-projeto">Site Temático</h3>
+                    <p class="descricao-projeto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem
+                        debitis architecto dolorum tenetur face assss</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="src/images/Landing Page.png" alt="Imagem Landing page" class="projetos-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="informacao-projeto">Landing Page</h3>
+                    <p class="descricao-projeto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem
+                        debitis
+                        architecto dolorum tenetur face assss</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="src/images/formulario.png" alt="Imagem Formulario" class="projetos-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="informacao-projeto">Formulário</h3>
+                    <p class="descricao-projeto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem
+                        debitis
+                        architecto dolorum tenetur face assss</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contatos">
+
+        <h2 class="contatos-titulo">Entre em Contato</h2>
+        <form class="formulario-contato" id="formulario" onsubmit="enviarWhats(event)">
+            <div class="grupo-form">
+                <input type="text" placeholder="Nome" class="campo-form" id="nome">
+            </div>
+            <div class="grupo-form">
+                <textarea placeholder="Digite sua Mensagem" rows="4" id="mensagem"></textarea class="campo-form">
+            </div>
+
+            <button type="submit" class="botao-form">Enviar WhatsApp</button>
+        </form>
+
+    </section>
+
+    <script src="src/js/index.js"></script>
+</body>
+
+</html>
