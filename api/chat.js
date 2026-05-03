@@ -1,5 +1,5 @@
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const MODEL = 'llama3-8b-8192';
+const MODEL = 'llama-3.1-8b-instant';
 
 const SYSTEM_PROMPT = `Você é o Ace, assistente virtual do José Alberto, desenvolvedor web fullstack.
 Responda de forma amigável, concisa e em português do Brasil.
