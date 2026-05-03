@@ -56,7 +56,7 @@ export default async function handler(req, res) {
     if (!groqRes.ok) {
         const err = await groqRes.text();
         console.error('Groq error:', groqRes.status, err);
-        return res.status(502).json({ error: 'AI service error', detail: err, status: groqRes.status });
+        return res.status(502).json({ error: 'AI service error' });
     }
 
     const data = await groqRes.json();
