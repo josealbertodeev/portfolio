@@ -337,4 +337,121 @@
         });
     }
 
+    /* ------------------------------------------------------------------
+       12. AI CHAT WIDGET
+       IMPORTANTE: atualize CHAT_API_URL com a URL do seu deploy na Vercel
+       Ex.: https://portfolio-chat-api.vercel.app/api/chat
+    ------------------------------------------------------------------ */
+    var CHAT_API_URL = 'https://SEU-PROJETO.vercel.app/api/chat'; // << ATUALIZAR após deploy
+
+    var chatWidget = document.getElementById('chatWidget');
+    var chatToggle = document.getElementById('chatToggle');
+    var chatClose = document.getElementById('chatClose');
+    var chatMessages = document.getElementById('chatMessages');
+    var chatInput = document.getElementById('chatInput');
+    var chatSend = document.getElementById('chatSend');
+    var chatBadge = document.getElementById('chatBadge');
+
+    var chatHistory = [];
+    var chatIsOpen = false;
+
+    function toggleChat() {
+        chatIsOpen = !chatIsOpen;
+        chatWidget.classList.toggle('chat-open', chatIsOpen);
+        chatToggle.classList.toggle('active', chatIsOpen);
+        chatToggle.setAttribute('aria-expanded', String(chatIsOpen));
+        chatWidget.setAttribute('aria-hidden', String(!chatIsOpen));
+        if (chatIsOpen) {
+            chatBadge.classList.remove('show');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            setTimeout(function () { chatInput.focus(); }, 350);
+        }
+    }
+
+    function appendMessage(role, content) {
+        var div = document.createElement('div');
+        div.className = 'chat-msg ' + (role === 'user' ? 'chat-msg-user' : 'chat-msg-bot');
+        var p = document.createElement('p');
+        p.textContent = content;
+        div.appendChild(p);
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTyping() {
+        var div = document.createElement('div');
+        div.className = 'chat-msg chat-msg-bot chat-typing';
+        div.id = 'chatTypingIndicator';
+        div.innerHTML = '<span></span><span></span><span></span>';
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTyping() {
+        var t = document.getElementById('chatTypingIndicator');
+        if (t) { t.remove(); }
+    }
+
+    function setInputState(disabled) {
+        chatInput.disabled = disabled;
+        chatSend.disabled = disabled;
+    }
+
+    async function sendMessage() {
+        var text = chatInput.value.trim();
+        if (!text || chatInput.disabled) { return; }
+
+        chatInput.value = '';
+        setInputState(true);
+
+        chatHistory.push({ role: 'user', content: text });
+        appendMessage('user', text);
+        showTyping();
+
+        try {
+            var res = await fetch(CHAT_API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: chatHistory }),
+            });
+
+            if (!res.ok) { throw new Error('HTTP ' + res.status); }
+
+            var data = await res.json();
+            var reply = data.reply || 'Desculpe, não consegui processar sua mensagem.';
+
+            chatHistory.push({ role: 'assistant', content: reply });
+            removeTyping();
+            appendMessage('assistant', reply);
+
+            if (!chatIsOpen) {
+                chatBadge.classList.add('show');
+            }
+        } catch (err) {
+            removeTyping();
+            appendMessage('assistant', 'Ops! Ocorreu um erro de conexão. Tente novamente ou entre em contato pelo email. 😊');
+            console.error('Chat error:', err);
+        } finally {
+            setInputState(false);
+            chatInput.focus();
+        }
+    }
+
+    if (chatToggle) { chatToggle.addEventListener('click', toggleChat); }
+    if (chatClose) { chatClose.addEventListener('click', toggleChat); }
+    if (chatSend) { chatSend.addEventListener('click', sendMessage); }
+    if (chatInput) {
+        chatInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    }
+
+    // Fechar com Escape
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && chatIsOpen) { toggleChat(); }
+    });
+
 })();

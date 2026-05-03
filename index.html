@@ -300,7 +300,7 @@
                 <!-- Projeto 1 -->
                 <article class="project-card reveal">
                     <div class="project-image">
-                        <img src="cafe-aroma.png" alt="Site Cafeteria com Agente IA" class="project-img"
+                        <img src="img/cafe-aroma.png" alt="Site Cafeteria com Agente IA" class="project-img"
                             loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/Site-Cafeteria-Agente-de-IA" target="_blank"
@@ -335,7 +335,7 @@
                 <!-- Projeto 2 -->
                 <article class="project-card reveal">
                     <div class="project-image">
-                        <img src="dev-burger.png" alt="DevBurger Interface" class="project-img" loading="lazy" />
+                        <img src="img/dev-burger.png" alt="DevBurger Interface" class="project-img" loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/devburger-interface" target="_blank"
                                 rel="noopener noreferrer" class="project-link-btn">Ver código</a>
@@ -368,7 +368,7 @@
                 <!-- Projeto 3 -->
                 <article class="project-card reveal">
                     <div class="project-image">
-                        <img src="tarefa.png" alt="Lista do que fazer" class="project-img" loading="lazy" />
+                        <img src="img/tarefa.png" alt="Lista do que fazer" class="project-img" loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/LIsta-do-que-fazer" target="_blank"
                                 rel="noopener noreferrer" class="project-link-btn">Ver código</a>
@@ -402,7 +402,7 @@
                 <!-- Projeto 4 -->
                 <article class="project-card reveal">
                     <div class="project-image">
-                        <img src="iphone17.png" alt="iPhone 17 Clone" class="project-img" loading="lazy" />
+                        <img src="img/iphone17.png" alt="iPhone 17 Clone" class="project-img" loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/iphone-17" target="_blank"
                                 rel="noopener noreferrer" class="project-link-btn">Ver código</a>
@@ -435,7 +435,7 @@
                 <!-- Projeto 5 -->
                 <article class="project-card reveal">
                     <div class="project-image">
-                        <img src="barbearia.png" alt="Barbearia Tratto" class="project-img" loading="lazy" />
+                        <img src="img/barbearia.png" alt="Barbearia Tratto" class="project-img" loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/Projeto-de-barbearia" target="_blank"
                                 rel="noopener noreferrer" class="project-link-btn">Ver código</a>
@@ -468,7 +468,7 @@
                 <!-- Projeto 6 -->
                 <article class="project-card reveal">
                     <div class="project-image">
-                        <img src="petshop.png" alt="Patinhas Pet Shop & Vet" class="project-img" loading="lazy" />
+                        <img src="img/petshop.png" alt="Patinhas Pet Shop & Vet" class="project-img" loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/petshop-com-agente" target="_blank"
                                 rel="noopener noreferrer" class="project-link-btn">Ver código</a>
@@ -502,7 +502,7 @@
                 <!-- Projeto 7 -->
                 <article class="project-card reveal">
                     <div class="project-image">
-                        <img src="bombeiro.png" alt="Bombeiro Profissional" class="project-img" loading="lazy" />
+                        <img src="img/bombeiro.png" alt="Bombeiro Profissional" class="project-img" loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/bombeiro_profissional" target="_blank"
                                 rel="noopener noreferrer" class="project-link-btn">Ver código</a>
@@ -535,7 +535,7 @@
                 <!-- Projeto 8 -->
                 <article class="project-card reveal">
                     <div class="project-image">
-                        <img src="fitness.png" alt="24H Fitness" class="project-img" loading="lazy" />
+                        <img src="img/fitness.png" alt="24H Fitness" class="project-img" loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/projeto-academia" target="_blank"
                                 rel="noopener noreferrer" class="project-link-btn">Ver código</a>
@@ -732,6 +732,71 @@
             </svg>
         </a>
 
+    </div>
+
+    <!-- ===== CHAT FAB (esquerda) ===== -->
+    <div class="chat-float-left">
+        <button class="chat-fab" id="chatToggle" aria-label="Abrir assistente virtual" aria-expanded="false">
+            <img class="chat-fab-avatar" id="chatFabAvatar" src="img/agent-avatar.png" alt="Assistente"
+                onerror="this.style.display='none';document.getElementById('chatFabIcon').style.display='flex'" />
+            <span class="chat-fab-icon-wrap" id="chatFabIcon">
+                <svg class="chat-fab-icon" viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+                </svg>
+            </span>
+            <svg class="chat-fab-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                width="22" height="22">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+            <span class="chat-fab-badge" id="chatBadge"></span>
+        </button>
+    </div>
+
+    <!-- ===== AI CHAT WIDGET ===== -->
+    <div class="chat-widget" id="chatWidget" role="dialog" aria-label="Assistente virtual" aria-hidden="true">
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar-wrap">
+                        <div class="chat-avatar-letters">
+                            <img src="img/agent-avatar.png" alt="Assistente" onerror="this.parentElement.innerHTML='JA'" />
+                        </div>
+                        <div class="chat-online-dot"></div>
+                    </div>
+                    <div class="chat-header-text">
+                        <span class="chat-name">Ace — Assistente do José</span>
+                        <span class="chat-status-text">Online agora ✦</span>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="chatClose" aria-label="Fechar chat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18"
+                        height="18">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-msg chat-msg-bot">
+                    <p>Olá! 👋 Sou o <strong>Ace</strong>, assistente virtual do José Alberto. Pergunte sobre suas
+                        skills,
+                        projetos ou como
+                        entrar em contato!</p>
+                </div>
+            </div>
+
+            <div class="chat-footer">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Digite sua mensagem..."
+                    maxlength="500" autocomplete="off" aria-label="Mensagem para o assistente" />
+                <button class="chat-send-btn" id="chatSend" aria-label="Enviar mensagem">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js?v=2" defer></script>
