@@ -342,7 +342,7 @@
        IMPORTANTE: atualize CHAT_API_URL com a URL do seu deploy na Vercel
        Ex.: https://portfolio-chat-api.vercel.app/api/chat
     ------------------------------------------------------------------ */
-    var CHAT_API_URL = 'https://SEU-PROJETO.vercel.app/api/chat'; // << ATUALIZAR após deploy
+    var CHAT_API_URL = 'https://portfolio-7gv9.vercel.app/api/chat';
 
     var chatWidget = document.getElementById('chatWidget');
     var chatToggle = document.getElementById('chatToggle');
