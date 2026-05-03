@@ -233,9 +233,6 @@
         });
     });
 
-    /* ------------------------------------------------------------------
-       6. SKILL CARDS — staggered reveal delay
-    ------------------------------------------------------------------ */
     document.querySelectorAll('.skill-card').forEach(function (card, i) {
         card.style.transitionDelay = (i * 0.06) + 's';
     });
@@ -264,6 +261,79 @@
 
             // mailto fallback works without backend
             // allow default form action (mailto:)
+        });
+    }
+
+    /* ------------------------------------------------------------------
+       9. LOADER — esconder após carregamento completo
+    ------------------------------------------------------------------ */
+    const loader = document.getElementById('loader');
+    if (loader) {
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                loader.classList.add('done');
+            }, 1900);
+        });
+        // fallback: remover após 4s caso 'load' demore
+        setTimeout(function () {
+            loader.classList.add('done');
+        }, 4000);
+    }
+
+    /* ------------------------------------------------------------------
+       10. SCROLL PROGRESS BAR + BACK TO TOP visibility
+    ------------------------------------------------------------------ */
+    const scrollProg = document.getElementById('scroll-prog');
+    const backToTop = document.getElementById('back-to-top');
+
+    function updateScrollUI() {
+        const scrollY = window.scrollY;
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+
+        // barra de progresso
+        if (scrollProg) {
+            scrollProg.style.width = (docH > 0 ? (scrollY / docH) * 100 : 0) + '%';
+        }
+
+        // botão voltar ao topo
+        if (backToTop) {
+            backToTop.classList.toggle('show', scrollY > 400);
+        }
+    }
+
+    window.addEventListener('scroll', updateScrollUI, { passive: true });
+    updateScrollUI(); // estado inicial
+
+    if (backToTop) {
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    /* ------------------------------------------------------------------
+       11. 3D TILT — cards de projeto (somente desktop)
+    ------------------------------------------------------------------ */
+    if (!('ontouchstart' in window)) {
+        document.querySelectorAll('.project-card').forEach(function (card) {
+            card.addEventListener('mousemove', function (e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width / 2;
+                const cy = rect.height / 2;
+                const rotX = ((y - cy) / cy) * -10;
+                const rotY = ((x - cx) / cx) * 10;
+                card.style.transform =
+                    'perspective(800px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translateY(-8px)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                card.style.transform = '';
+                card.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                setTimeout(function () {
+                    card.style.transition = '';
+                }, 500);
+            });
         });
     }
 
