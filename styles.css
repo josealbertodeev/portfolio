@@ -936,6 +936,100 @@ button {
 }
 
 /* ===========================
+   IA NO DIA A DIA
+   =========================== */
+.ia-daily {
+    background: var(--bg-secondary);
+}
+
+.ia-daily-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ia-daily-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    transition: var(--transition);
+}
+
+.ia-daily-card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-4px);
+}
+
+.ia-daily-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--border-accent);
+    border-radius: var(--radius-md);
+    background: var(--bg-primary);
+}
+
+.ia-icon-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.ia-icon-invert {
+    filter: invert(1) brightness(0.85);
+}
+
+.ia-icon-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ia-daily-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.ia-daily-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.ia-daily-desc {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.ia-daily-tag {
+    display: inline-block;
+    margin-top: 0.25rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    border-radius: 20px;
+    border: 1px solid var(--border-accent);
+    color: var(--accent-cyan);
+    width: fit-content;
+}
+
+/* ===========================
    CONTACT
    =========================== */
 .contact {
