@@ -62,13 +62,12 @@
        2. TYPING EFFECT — hero subtitle
     ------------------------------------------------------------------ */
     const words = [
-        'Full-Stack',
-        'Front-End',
-        'React',
+        'Front-End Jr',
+        'React.js',
         'TypeScript',
-        'Node.js',
+        'JavaScript ES6+',
         'IA & Automação',
-        'JavaScript',
+        'HTML5 & CSS3',
     ];
     const typingEl = document.getElementById('typingText');
     let wordIndex = 0;

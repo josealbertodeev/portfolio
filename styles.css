@@ -38,6 +38,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -46,6 +47,7 @@ body {
     color: var(--text-primary);
     line-height: 1.7;
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 img {
@@ -1259,34 +1261,89 @@ button {
         display: flex;
     }
 
+    /* --- About --- */
     .about-grid {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2.5rem;
+        overflow: hidden;
     }
 
-    .about-actions {
-        justify-content: center;
+    .about-image-wrapper {
+        margin: 0 auto;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .about-content {
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .about-heading {
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .about-text {
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .about-facts {
         grid-template-columns: 1fr;
     }
 
+    .about-facts li {
+        text-align: left;
+    }
+
+    .about-actions {
+        justify-content: center;
+    }
+
+    .about-stats {
+        width: 100%;
+        margin: 2rem auto 0;
+    }
+
+    .stat-label {
+        white-space: normal;
+    }
+
+    /* --- Skills --- */
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    /* --- Contact --- */
     .contact-grid {
         grid-template-columns: 1fr;
     }
 
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    /* --- Footer --- */
     .footer-content {
         flex-direction: column;
         align-items: center;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        text-align: center;
     }
 }
 
 @media (max-width: 480px) {
+    /* --- Hero --- */
+    .hero-title {
+        font-size: clamp(1.8rem, 9vw, 2.6rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(0.95rem, 5vw, 1.25rem);
+    }
+
     .hero-actions {
         flex-direction: column;
         align-items: center;
@@ -1298,8 +1355,30 @@ button {
         max-width: 280px;
     }
 
+    /* --- About --- */
+    .about-avatar {
+        width: 175px;
+        height: 175px;
+    }
+
+    .about-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* --- Projects --- */
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* --- Timeline --- */
+    .timeline {
+        padding-left: 1.25rem;
+    }
+
+    /* --- Section --- */
+    .section {
+        padding: clamp(3.5rem, 8vh, 6rem) 0;
     }
 }
 
@@ -2386,5 +2465,73 @@ button {
     .chat-fab {
         width: 46px;
         height: 46px;
+    }
+}
+
+/* ===========================
+   RESPONSIVE — OVERRIDES FINAIS
+   (após estilos base para garantir cascata correta)
+   =========================== */
+@media (max-width: 768px) {
+    /* About stats: sobrescreve width:fit-content e white-space:nowrap dos estilos base */
+    .about-stats {
+        width: 100%;
+        margin: 2rem auto 0;
+        justify-content: space-around;
+        padding: 1.25rem 0.75rem;
+    }
+
+    .stat-item {
+        padding: 0 0.75rem;
+    }
+
+    .stat-label {
+        white-space: normal;
+        text-align: center;
+    }
+
+    /* Section headers centralizados */
+    .section-header {
+        text-align: center;
+    }
+
+    .section-tag,
+    .section-title {
+        text-align: center;
+    }
+
+    .section-desc {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Project filters */
+    .project-filters {
+        justify-content: center;
+    }
+
+    /* Timeline */
+    .timeline-content {
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem 0.5rem;
+    }
+
+    .stat-item {
+        flex: 1 1 calc(50% - 1rem);
+        min-width: 80px;
+        padding: 0.5rem;
+    }
+
+    .stat-divider {
+        display: none;
     }
 }
