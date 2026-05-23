@@ -724,7 +724,26 @@ button {
     border-radius: var(--radius-md);
     transition: var(--transition);
     cursor: default;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: skill-in 0.4s ease forwards;
 }
+
+@keyframes skill-in {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* stagger: cada card recebe delay via nth-child */
+.skill-card:nth-child(1)  { animation-delay: 0.05s; }
+.skill-card:nth-child(2)  { animation-delay: 0.12s; }
+.skill-card:nth-child(3)  { animation-delay: 0.19s; }
+.skill-card:nth-child(4)  { animation-delay: 0.26s; }
+.skill-card:nth-child(5)  { animation-delay: 0.33s; }
+.skill-card:nth-child(6)  { animation-delay: 0.40s; }
+.skill-card:nth-child(7)  { animation-delay: 0.47s; }
+.skill-card:nth-child(8)  { animation-delay: 0.54s; }
+.skill-card:nth-child(9)  { animation-delay: 0.61s; }
+.skill-card:nth-child(10) { animation-delay: 0.68s; }
 
 .skill-card:hover {
     border-color: var(--border-accent);
@@ -1671,6 +1690,293 @@ button {
         width: 46px;
         height: 46px;
     }
+}
+
+/* ===========================
+   STATS DO ABOUT
+   =========================== */
+.about-stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    width: fit-content;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.stat-plus {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 0.73rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+/* ===========================
+   TIMELINE
+   =========================== */
+.timeline-section {
+    background: var(--bg-secondary);
+}
+
+.timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), transparent);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 1.75rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -2.35rem;
+    top: 0.35rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-cyan);
+    transition: var(--transition);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
+}
+
+.timeline-dot-accent {
+    background: var(--gradient);
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2), var(--glow-purple);
+}
+
+.timeline-item:hover .timeline-dot {
+    box-shadow: 0 0 0 5px rgba(0, 212, 255, 0.2), var(--glow-cyan);
+}
+
+.timeline-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-content {
+    border-color: var(--border-accent);
+    box-shadow: var(--glow-cyan);
+}
+
+.timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.timeline-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0.4rem 0 0.5rem;
+}
+
+.timeline-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.timeline-badge {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    border-radius: 20px;
+    background: rgba(124, 58, 237, 0.15);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    color: #a78bfa;
+}
+
+/* ===========================
+   FILTRO DE PROJETOS
+   =========================== */
+.project-filters {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+    padding: 0.45rem 1.2rem;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover {
+    border-color: var(--border-accent);
+    color: var(--accent-cyan);
+    background: rgba(0, 212, 255, 0.06);
+}
+
+.filter-btn.active {
+    background: var(--gradient);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: var(--glow-cyan);
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+/* ===========================
+   TOOLTIPS DOS BOTÕES FLUTUANTES
+   =========================== */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    background: rgba(15, 15, 26, 0.97);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), var(--glow-cyan);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* seta apontando para o botão */
+[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    right: calc(100% + 6px);
+    top: 50%;
+    transform: translateY(-50%) translateX(4px);
+    border: 5px solid transparent;
+    border-left-color: var(--border-accent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+[data-tooltip]:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* no mobile esconde tooltip para não sobrepor conteúdo */
+@media (max-width: 768px) {
+    [data-tooltip]::after,
+    [data-tooltip]::before {
+        display: none;
+    }
+}
+
+/* chat FAB fica à esquerda — tooltip aparece à direita */
+.chat-float-left[data-tooltip]::after {
+    right: auto;
+    left: calc(100% + 12px);
+    transform: translateY(-50%) translateX(-6px);
+}
+
+.chat-float-left[data-tooltip]:hover::after {
+    transform: translateY(-50%) translateX(0);
+}
+
+.chat-float-left[data-tooltip]::before {
+    right: auto;
+    left: calc(100% + 6px);
+    border-left-color: transparent;
+    border-right-color: var(--border-accent);
+    transform: translateY(-50%) translateX(-4px);
+}
+
+.chat-float-left[data-tooltip]:hover::before {
+    transform: translateY(-50%) translateX(0);
 }
 
 /* ===========================

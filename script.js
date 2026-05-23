@@ -313,6 +313,50 @@
     }
 
     /* ------------------------------------------------------------------
+       11b. STATS COUNTER — anima números no About
+    ------------------------------------------------------------------ */
+    var statEls = document.querySelectorAll('.stat-number[data-target]');
+    if (statEls.length) {
+        var statsObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                var el = entry.target;
+                var target = parseInt(el.getAttribute('data-target'), 10);
+                var current = 0;
+                var step = Math.ceil(target / 30);
+                var timer = setInterval(function () {
+                    current = Math.min(current + step, target);
+                    el.textContent = current;
+                    if (current >= target) clearInterval(timer);
+                }, 40);
+                statsObserver.unobserve(el);
+            });
+        }, { threshold: 0.5 });
+        statEls.forEach(function (el) { statsObserver.observe(el); });
+    }
+
+    /* ------------------------------------------------------------------
+       11c. FILTRO DE PROJETOS
+    ------------------------------------------------------------------ */
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var projectCards = document.querySelectorAll('.project-card[data-category]');
+
+    filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            filterBtns.forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var filter = btn.getAttribute('data-filter');
+            projectCards.forEach(function (card) {
+                if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    /* ------------------------------------------------------------------
        11. 3D TILT — cards de projeto (somente desktop)
     ------------------------------------------------------------------ */
     if (!('ontouchstart' in window)) {
