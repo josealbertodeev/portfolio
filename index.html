@@ -13,7 +13,7 @@
     <meta property="og:description"
         content="Desenvolvedor Front-End Jr com foco em React.js, TypeScript e JavaScript ES6+. Interfaces responsivas e centradas na experiência do usuário." />
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/168390396?v=4" />
-    <meta property="og:url" content="https://josealbertodeev.github.io" />
+    <meta property="og:url" content="https://josealbertodeev.github.io/portfolio/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="José Alberto — Dev Front-End Jr" />
     <meta name="twitter:description"
@@ -30,6 +30,18 @@
 </head>
 
 <body>
+
+    <!-- SPRITE DE ÍCONES (reutilizados via <use>) -->
+    <svg hidden aria-hidden="true">
+        <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+        </symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </symbol>
+    </svg>
 
     <!-- SCROLL PROGRESS -->
     <div id="scroll-prog"></div>
@@ -60,10 +72,10 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projetos</a></li>
                 <li><a href="#ia-daily" class="nav-link">IA Diária</a></li>
+                <li><a href="doc/Jose Alberto B Farias-Cs.pdf" download="Curriculo-Jose-Alberto-Farias.pdf"
+                        class="nav-link">Currículo</a></li>
                 <li><a href="#contact" class="nav-link">Contato</a></li>
             </ul>
-            <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
-                class="btn btn-outline btn-sm">GitHub</a>
             <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
@@ -94,17 +106,11 @@
             <div class="hero-socials">
                 <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
                     class="social-link" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-                        <path
-                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                    </svg>
+                    <svg viewBox="0 0 24 24" width="22" height="22"><use href="#icon-github"></use></svg>
                 </a>
                 <a href="https://www.linkedin.com/in/josealbertofarias/" target="_blank" rel="noopener noreferrer"
                     class="social-link" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-                        <path
-                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
+                    <svg viewBox="0 0 24 24" width="22" height="22"><use href="#icon-linkedin"></use></svg>
                 </a>
                 <a href="mailto:albertofarias07@hotmail.com" class="social-link" aria-label="Email">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
@@ -172,26 +178,27 @@
                         alt="Foto de perfil de José Alberto Farias" class="about-avatar" loading="lazy" />
                     <div class="about-badge">
                         <span class="badge-dot"></span>
-                         Front-End Developer 💻
+                        Front-End Developer 💻
                     </div>
                 </div>
                 <div class="about-content reveal">
-                    <h3 class="about-heading">Desenvolvedor <span class="gradient-text">Front-End</span></h3>
+                    <h3 class="about-heading">Código, tecnologia e <span class="gradient-text">soluções que fazem
+                            sentido</span>.</h3>
                     <p class="about-text">
-                        Crio interfaces <strong>modernas, intuitivas e acessíveis</strong>, desenvolvendo
-                        aplicações front-end escaláveis com foco em <strong>performance, usabilidade e
-                            experiência do usuário</strong>.
+                        Sou desenvolvedor <strong>Front-end</strong>, apaixonado por criar experiências digitais
+                        <strong>modernas, intuitivas e funcionais</strong>.
                     </p>
                     <p class="about-text">
-                        Minha trajetória começou na <strong>automação industrial</strong>, onde atuei por
-                        <strong>5 anos</strong> em um ambiente que exige precisão, lógica e responsabilidade
-                        técnica. Essa experiência me proporcionou uma visão prática sobre como a tecnologia
-                        impacta processos, negócios e pessoas no mundo real.
+                        Minha experiência na <strong>automação industrial</strong> me ensinou a pensar de forma
+                        analítica, solucionar problemas e entender como a tecnologia pode tornar processos mais
+                        eficientes. Hoje aplico essa experiência no desenvolvimento web, construindo aplicações
+                        com foco em <strong>performance, acessibilidade, usabilidade e experiência do
+                            usuário</strong>.
                     </p>
                     <p class="about-text">
-                        Atualmente, curso <strong>MBA em IA &amp; Automação de Negócios</strong>,
-                        aprofundando meus conhecimentos para integrar soluções inteligentes ao desenvolvimento
-                        de software e construir produtos cada vez mais eficientes e inovadores.
+                        Estou constantemente evoluindo e, atualmente, aprofundo meus conhecimentos em
+                        <strong>Inteligência Artificial e automação de negócios</strong>, explorando novas
+                        formas de unir desenvolvimento e tecnologia para criar soluções inteligentes.
                     </p>
                     <ul class="about-facts">
                         <li>
@@ -200,7 +207,7 @@
                         </li>
                         <li>
                             <span class="fact-icon">🎨</span>
-                            Especialista em layouts responsivos e bem estruturados
+                            Prática constante em layouts responsivos e bem estruturados
                         </li>
                         <li>
                             <span class="fact-icon">🧠</span>
@@ -213,8 +220,6 @@
                     </ul>
                     <div class="about-actions">
                         <a href="mailto:albertofarias07@hotmail.com" class="btn btn-primary">Entre em contato</a>
-                        <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-ghost">Ver GitHub</a>
                         <a href="doc/Jose Alberto B Farias-Cs.pdf" download="Curriculo-Jose-Alberto-Farias.pdf"
                             class="btn btn-outline btn-sm">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
@@ -235,8 +240,8 @@
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="2">0</span>
-                            <span class="stat-label">Estrelas no GitHub</span>
+                            <span class="stat-number" data-target="8">0</span>
+                            <span class="stat-label">Projetos publicados</span>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat-item">
@@ -350,7 +355,7 @@
                 </div>
 
                 <div class="skill-category reveal">
-                    <h3 class="category-title">Back-End &amp; IA</h3>
+                    <h3 class="category-title">Complementares: Back-End &amp; IA</h3>
                     <div class="skills-grid">
                         <div class="skill-card">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
@@ -445,8 +450,10 @@
                             <span class="tag">JS</span>
                         </div>
                         <h3 class="project-title">Site Cafeteria com Agente IA</h3>
-                        <p class="project-desc">Site de cafeteria integrado com agente de inteligência artificial para
-                            atendimento automatizado e experiência personalizada.</p>
+                        <p class="project-desc">Landing page de cafeteria com um agente de IA integrado ao chat do
+                            site, treinado para responder dúvidas sobre cardápio, horários e pedidos —
+                            automatizando o primeiro atendimento ao cliente sem depender de um atendente humano
+                            o tempo todo.</p>
                         <div class="project-links">
                             <a href="https://site-cafeteria-agente-de-ia.vercel.app/" target="_blank"
                                 rel="noopener noreferrer" class="project-github-link">
@@ -612,8 +619,10 @@
                             <span class="tag">JS</span>
                         </div>
                         <h3 class="project-title">Patinhas Pet Shop & Vet</h3>
-                        <p class="project-desc">Landing page completa para pet shop e clínica veterinária com agente
-                            de IA GPTMaker integrado para atendimento automatizado 24/7.</p>
+                        <p class="project-desc">Landing page completa para pet shop e clínica veterinária com um
+                            agente de IA (GPTMaker) integrado, treinado para tirar dúvidas sobre serviços,
+                            horários e agendamentos 24/7 — reduzindo a necessidade de atendimento manual fora do
+                            horário comercial.</p>
                         <div class="project-links">
                             <a href="https://petshop-com-agente.vercel.app/" target="_blank" rel="noopener noreferrer"
                                 class="project-github-link">
@@ -712,8 +721,8 @@
             <div class="section-header reveal">
                 <span class="section-tag">// ia no dia a dia</span>
                 <h2 class="section-title">IA que uso todo dia</h2>
-                <p class="section-desc">Ferramentas de inteligência artificial que fazem parte da minha rotina de
-                    desenvolvimento.</p>
+                <p class="section-desc">Como cada ferramenta entra no meu fluxo de trabalho, do primeiro rascunho
+                    de uma ideia até o código em produção.</p>
             </div>
             <div class="ia-daily-grid">
 
@@ -783,101 +792,54 @@
         </div>
     </section>
 
-    <!-- ===== CONTATO ===== -->
-    <section class="contact section" id="contact">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">// contato</span>
-                <h2 class="section-title">Vamos conversar?</h2>
-                <p class="section-desc">Estou aberto a novas oportunidades, projetos e parcerias. Me envie uma mensagem!
-                </p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info reveal">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
-                                height="20">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <polyline points="22,6 12,13 2,6" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="contact-label">Email</p>
-                            <a href="mailto:albertofarias07@hotmail.com"
-                                class="contact-value">albertofarias07@hotmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="contact-label">LinkedIn</p>
-                            <a href="https://www.linkedin.com/in/josealbertofarias/" target="_blank"
-                                rel="noopener noreferrer" class="contact-value">josealbertofarias</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                                <path
-                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="contact-label">GitHub</p>
-                            <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
-                                class="contact-value">josealbertodeev</a>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="contact-form reveal" id="contactForm" action="mailto:albertofarias07@hotmail.com"
-                    method="get" enctype="text/plain">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Nome</label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="Seu nome completo"
-                            required minlength="2" maxlength="100" autocomplete="name" />
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com"
-                            required maxlength="254" autocomplete="email" />
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Mensagem</label>
-                        <textarea id="message" name="body" class="form-textarea" rows="5"
-                            placeholder="Escreva sua mensagem aqui..." required minlength="10"
-                            maxlength="2000"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">
-                        Enviar mensagem
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"
-                            height="18">
-                            <line x1="22" y1="2" x2="11" y2="13" />
-                            <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CTA IMPACTO ===== -->
-    <section class="cta-section" id="cta">
+    <!-- ===== CONTATO / CTA ===== -->
+    <section class="cta-section" id="contact">
         <div class="cta-orb cta-orb-1"></div>
         <div class="cta-orb cta-orb-2"></div>
         <div class="container cta-content reveal">
-            <span class="section-tag">// próximo passo</span>
+            <span class="section-tag">// contato</span>
             <h2 class="cta-title">Vamos construir algo <span class="gradient-text">incrível</span> juntos?</h2>
             <p class="cta-sub">Estou disponível para novos projetos, freelas e oportunidades de trabalho. Me manda uma
                 mensagem!</p>
+
+            <div class="contact-items">
+                <a href="mailto:albertofarias07@hotmail.com" class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+                            height="20">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="contact-label">Email</p>
+                        <span class="contact-value">albertofarias07@<wbr>hotmail.com</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/josealbertofarias/" target="_blank" rel="noopener noreferrer"
+                    class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><use href="#icon-linkedin"></use></svg>
+                    </div>
+                    <div>
+                        <p class="contact-label">LinkedIn</p>
+                        <span class="contact-value">josealbertofarias</span>
+                    </div>
+                </a>
+                <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
+                    class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><use href="#icon-github"></use></svg>
+                    </div>
+                    <div>
+                        <p class="contact-label">GitHub</p>
+                        <span class="contact-value">josealbertodeev</span>
+                    </div>
+                </a>
+            </div>
+
             <div class="cta-actions">
-                <a href="#contact" class="btn btn-primary">
+                <a href="mailto:albertofarias07@hotmail.com" class="btn btn-primary">
                     Falar comigo
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
                         <line x1="22" y1="2" x2="11" y2="13" />
@@ -893,28 +855,9 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <a href="#hero" class="nav-logo">
-                    <span class="logo-bracket">&lt;</span>JA<span class="logo-bracket">/&gt;</span>
-                </a>
                 <p class="footer-text">
                     Desenvolvido com <span class="heart">♥</span> por José Alberto Farias &mdash; 2026
                 </p>
-                <div class="footer-socials">
-                    <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
-                        class="social-link" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path
-                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/josealbertofarias/" target="_blank" rel="noopener noreferrer"
-                        class="social-link" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path
-                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
-                    </a>
-                </div>
             </div>
         </div>
     </footer>
@@ -940,72 +883,6 @@
             </svg>
         </a>
 
-    </div>
-
-    <!-- ===== CHAT FAB (esquerda) ===== -->
-    <div class="chat-float-left" data-tooltip="Falar com o Ace, meu assistente de IA">
-        <button class="chat-fab" id="chatToggle" aria-label="Abrir assistente virtual" aria-expanded="false">
-            <img class="chat-fab-avatar" id="chatFabAvatar" src="img/agent-avatar.png" alt="Assistente"
-                onerror="this.style.display='none';document.getElementById('chatFabIcon').style.display='flex'" />
-            <span class="chat-fab-icon-wrap" id="chatFabIcon">
-                <svg class="chat-fab-icon" viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
-                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
-                </svg>
-            </span>
-            <svg class="chat-fab-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                width="22" height="22">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-            <span class="chat-fab-badge" id="chatBadge"></span>
-        </button>
-    </div>
-
-    <!-- ===== AI CHAT WIDGET ===== -->
-    <div class="chat-widget" id="chatWidget" role="dialog" aria-label="Assistente virtual" aria-hidden="true">
-        <div class="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="chat-avatar-wrap">
-                        <div class="chat-avatar-letters">
-                            <img src="img/agent-avatar.png" alt="Assistente"
-                                onerror="this.parentElement.innerHTML='JA'" />
-                        </div>
-                        <div class="chat-online-dot"></div>
-                    </div>
-                    <div class="chat-header-text">
-                        <span class="chat-name">Ace — Assistente do José</span>
-                        <span class="chat-status-text">Online agora ✦</span>
-                    </div>
-                </div>
-                <button class="chat-close-btn" id="chatClose" aria-label="Fechar chat">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18"
-                        height="18">
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                </button>
-            </div>
-
-            <div class="chat-messages" id="chatMessages">
-                <div class="chat-msg chat-msg-bot">
-                    <p>Olá! 👋 Sou o <strong>Ace</strong>, assistente virtual do José Alberto. Pergunte sobre suas
-                        skills,
-                        projetos ou como
-                        entrar em contato!</p>
-                </div>
-            </div>
-
-            <div class="chat-footer">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Digite sua mensagem..."
-                    maxlength="500" autocomplete="off" aria-label="Mensagem para o assistente" />
-                <button class="chat-send-btn" id="chatSend" aria-label="Enviar mensagem">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                    </svg>
-                </button>
-            </div>
-        </div>
     </div>
 
     <script src="script.js?v=2" defer></script>

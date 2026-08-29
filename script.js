@@ -128,7 +128,7 @@
         return r + ',' + g + ',' + b;
     }
 
-    const COLORS = ['#00d4ff', '#7c3aed', '#a78bfa', '#38bdf8'];
+    const COLORS = ['#06b6d4', '#a855f7', '#22d3ee', '#c084fc'];
 
     function Particle() {
         this.x = random(0, W);
@@ -169,7 +169,7 @@
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = 'rgba(0,212,255,' + opacity + ')';
+                    ctx.strokeStyle = 'rgba(6,182,212,' + opacity + ')';
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
@@ -234,6 +234,9 @@
         });
     });
 
+    /* ------------------------------------------------------------------
+       6. SKILL CARDS — staggered reveal delay
+    ------------------------------------------------------------------ */
     document.querySelectorAll('.skill-card').forEach(function (card, i) {
         card.style.transitionDelay = (i * 0.06) + 's';
     });
@@ -246,27 +249,7 @@
     });
 
     /* ------------------------------------------------------------------
-       8. CONTACT FORM — basic client-side validation feedback
-    ------------------------------------------------------------------ */
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', function (e) {
-            const name = form.querySelector('#name').value.trim();
-            const email = form.querySelector('#email').value.trim();
-            const message = form.querySelector('#message').value.trim();
-
-            if (!name || !email || !message) {
-                e.preventDefault();
-                return;
-            }
-
-            // mailto fallback works without backend
-            // allow default form action (mailto:)
-        });
-    }
-
-    /* ------------------------------------------------------------------
-       9. LOADER — esconder após carregamento completo
+       8. LOADER — esconder após carregamento completo
     ------------------------------------------------------------------ */
     const loader = document.getElementById('loader');
     if (loader) {
@@ -282,7 +265,7 @@
     }
 
     /* ------------------------------------------------------------------
-       10. SCROLL PROGRESS BAR + BACK TO TOP visibility
+       9. SCROLL PROGRESS BAR + BACK TO TOP visibility
     ------------------------------------------------------------------ */
     const scrollProg = document.getElementById('scroll-prog');
     const backToTop = document.getElementById('back-to-top');
@@ -312,7 +295,7 @@
     }
 
     /* ------------------------------------------------------------------
-       11b. STATS COUNTER — anima números no About
+       10. STATS COUNTER — anima números no About
     ------------------------------------------------------------------ */
     var statEls = document.querySelectorAll('.stat-number[data-target]');
     if (statEls.length) {
@@ -335,7 +318,7 @@
     }
 
     /* ------------------------------------------------------------------
-       11c. FILTRO DE PROJETOS
+       11. FILTRO DE PROJETOS
     ------------------------------------------------------------------ */
     var filterBtns = document.querySelectorAll('.filter-btn');
     var projectCards = document.querySelectorAll('.project-card[data-category]');
@@ -356,7 +339,7 @@
     });
 
     /* ------------------------------------------------------------------
-       11. 3D TILT — cards de projeto (somente desktop)
+       12. 3D TILT — cards de projeto (somente desktop)
     ------------------------------------------------------------------ */
     if (!('ontouchstart' in window)) {
         document.querySelectorAll('.project-card').forEach(function (card) {
@@ -381,122 +364,5 @@
             });
         });
     }
-
-    /* ------------------------------------------------------------------
-       12. AI CHAT WIDGET
-       IMPORTANTE: atualize CHAT_API_URL com a URL do seu deploy na Vercel
-       Ex.: https://portfolio-chat-api.vercel.app/api/chat
-    ------------------------------------------------------------------ */
-    var CHAT_API_URL = '/api/chat';
-
-    var chatWidget = document.getElementById('chatWidget');
-    var chatToggle = document.getElementById('chatToggle');
-    var chatClose = document.getElementById('chatClose');
-    var chatMessages = document.getElementById('chatMessages');
-    var chatInput = document.getElementById('chatInput');
-    var chatSend = document.getElementById('chatSend');
-    var chatBadge = document.getElementById('chatBadge');
-
-    var chatHistory = [];
-    var chatIsOpen = false;
-
-    function toggleChat() {
-        chatIsOpen = !chatIsOpen;
-        chatWidget.classList.toggle('chat-open', chatIsOpen);
-        chatToggle.classList.toggle('active', chatIsOpen);
-        chatToggle.setAttribute('aria-expanded', String(chatIsOpen));
-        chatWidget.setAttribute('aria-hidden', String(!chatIsOpen));
-        if (chatIsOpen) {
-            chatBadge.classList.remove('show');
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            setTimeout(function () { chatInput.focus(); }, 350);
-        }
-    }
-
-    function appendMessage(role, content) {
-        var div = document.createElement('div');
-        div.className = 'chat-msg ' + (role === 'user' ? 'chat-msg-user' : 'chat-msg-bot');
-        var p = document.createElement('p');
-        p.textContent = content;
-        div.appendChild(p);
-        chatMessages.appendChild(div);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function showTyping() {
-        var div = document.createElement('div');
-        div.className = 'chat-msg chat-msg-bot chat-typing';
-        div.id = 'chatTypingIndicator';
-        div.innerHTML = '<span></span><span></span><span></span>';
-        chatMessages.appendChild(div);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function removeTyping() {
-        var t = document.getElementById('chatTypingIndicator');
-        if (t) { t.remove(); }
-    }
-
-    function setInputState(disabled) {
-        chatInput.disabled = disabled;
-        chatSend.disabled = disabled;
-    }
-
-    async function sendMessage() {
-        var text = chatInput.value.trim();
-        if (!text || chatInput.disabled) { return; }
-
-        chatInput.value = '';
-        setInputState(true);
-
-        chatHistory.push({ role: 'user', content: text });
-        appendMessage('user', text);
-        showTyping();
-
-        try {
-            var res = await fetch(CHAT_API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: chatHistory }),
-            });
-
-            if (!res.ok) { throw new Error('HTTP ' + res.status); }
-
-            var data = await res.json();
-            var reply = data.reply || 'Desculpe, não consegui processar sua mensagem.';
-
-            chatHistory.push({ role: 'assistant', content: reply });
-            removeTyping();
-            appendMessage('assistant', reply);
-
-            if (!chatIsOpen) {
-                chatBadge.classList.add('show');
-            }
-        } catch (err) {
-            removeTyping();
-            appendMessage('assistant', 'Ops! Ocorreu um erro de conexão. Tente novamente ou entre em contato pelo email. 😊');
-            console.error('Chat error:', err);
-        } finally {
-            setInputState(false);
-            chatInput.focus();
-        }
-    }
-
-    if (chatToggle) { chatToggle.addEventListener('click', toggleChat); }
-    if (chatClose) { chatClose.addEventListener('click', toggleChat); }
-    if (chatSend) { chatSend.addEventListener('click', sendMessage); }
-    if (chatInput) {
-        chatInput.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
-    }
-
-    // Fechar com Escape
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && chatIsOpen) { toggleChat(); }
-    });
 
 })();
