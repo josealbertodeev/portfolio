@@ -1048,42 +1048,67 @@ button {
    =========================== */
 .contact-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
-    max-width: 760px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    max-width: 900px;
     margin: 0 auto 2.5rem;
 }
 
+@media (max-width: 720px) {
+    .contact-items {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+    }
+}
+
 .contact-item {
+    --net: var(--accent-cyan);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    gap: 0.85rem;
-    padding: 1.75rem 1.5rem;
+    text-align: left;
+    gap: 0.8rem;
+    padding: 1.1rem 1.1rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     transition: var(--transition);
 }
 
+.contact-item--email {
+    --net: var(--accent-cyan);
+}
+
+.contact-item--linkedin {
+    --net: #0a66c2;
+}
+
+.contact-item--github {
+    --net: var(--accent-purple);
+}
+
 .contact-item:hover {
-    border-color: var(--border-accent);
-    box-shadow: var(--glow-cyan);
+    border-color: var(--net);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--net) 22%, transparent);
     transform: translateY(-4px);
 }
 
 .contact-icon {
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-primary);
-    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--net) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--net) 30%, transparent);
     border-radius: 50%;
-    color: var(--accent-cyan);
+    color: var(--net);
     flex-shrink: 0;
+}
+
+.contact-text {
+    min-width: 0;
+    flex: 1;
 }
 
 .contact-label {
@@ -1092,19 +1117,35 @@ button {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
 }
 
 .contact-value {
-    font-size: 0.95rem;
+    display: block;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     transition: color var(--transition);
-    overflow-wrap: break-word;
-    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.contact-value:hover {
-    color: var(--accent-cyan);
+.contact-item:hover .contact-value {
+    color: var(--net);
+}
+
+.contact-arrow {
+    flex-shrink: 0;
+    color: var(--net);
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+.contact-item:hover .contact-arrow {
+    opacity: 1;
+    transform: none;
 }
 
 /* ===========================
