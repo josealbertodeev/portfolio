@@ -21,11 +21,11 @@
     <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/168390396?v=4" />
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
-    <link rel="stylesheet" href="styles.css?v=4" />
+    <link rel="stylesheet" href="styles.css?v=13" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet" />
 </head>
 
@@ -43,8 +43,10 @@
         </symbol>
     </svg>
 
-    <!-- SCROLL PROGRESS -->
-    <div id="scroll-prog"></div>
+    <!-- FUNDO DE PARTICULAS (fixo, cobre a pagina inteira) -->
+    <div class="particles-bg" aria-hidden="true">
+        <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+    </div>
 
     <!-- LOADER -->
     <div id="loader">
@@ -65,17 +67,34 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
-                <span class="logo-bracket">&lt;</span>JA<span class="logo-bracket">/&gt;</span>
+                <span class="nav-logo-badge">JA</span>
+                <span class="nav-logo-name">José Alberto Farias</span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#timeline" class="nav-link">Trajetória</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projetos</a></li>
                 <li><a href="#ia-daily" class="nav-link">IA Diária</a></li>
-                <li><a href="doc/Jose Alberto B Farias-Cs.pdf" download="Curriculo-Jose-Alberto-Farias.pdf"
-                        class="nav-link">Currículo</a></li>
                 <li><a href="#contact" class="nav-link">Contato</a></li>
             </ul>
+            <div class="nav-socials">
+                <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
+                    class="nav-social nav-social--github" title="GitHub" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><use href="#icon-github"></use></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/josealbertofarias/" target="_blank" rel="noopener noreferrer"
+                    class="nav-social nav-social--linkedin" title="LinkedIn" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><use href="#icon-linkedin"></use></svg>
+                </a>
+                <a href="https://wa.me/5511950354575" target="_blank" rel="noopener noreferrer"
+                    class="nav-social nav-social--whatsapp" title="WhatsApp" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                        <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+                    </svg>
+                </a>
+            </div>
             <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
@@ -83,8 +102,7 @@
     </nav>
 
     <!-- ===== HERO ===== -->
-    <section class="hero" id="hero">
-        <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+    <section class="hero view active" id="hero">
         <div class="hero-content">
             <div class="hero-tag">
                 <span class="dot"></span> Disponível para projetos
@@ -105,14 +123,14 @@
             </div>
             <div class="hero-socials">
                 <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
-                    class="social-link" aria-label="GitHub">
+                    class="social-link social-link--github" aria-label="GitHub">
                     <svg viewBox="0 0 24 24" width="22" height="22"><use href="#icon-github"></use></svg>
                 </a>
                 <a href="https://www.linkedin.com/in/josealbertofarias/" target="_blank" rel="noopener noreferrer"
-                    class="social-link" aria-label="LinkedIn">
+                    class="social-link social-link--linkedin" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24" width="22" height="22"><use href="#icon-linkedin"></use></svg>
                 </a>
-                <a href="mailto:albertofarias07@hotmail.com" class="social-link" aria-label="Email">
+                <a href="mailto:albertofarias07@hotmail.com" class="social-link social-link--email" aria-label="Email">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                         <polyline points="22,6 12,13 2,6" />
@@ -128,7 +146,7 @@
     </section>
 
     <!-- ===== MARQUEE ===== -->
-    <div class="marquee-section">
+    <div class="marquee-section" data-view="hero">
         <div class="marquee-wrap">
             <div class="marquee-track">
                 <span>HTML5</span><span class="mq-sep">✦</span>
@@ -165,7 +183,7 @@
     </div>
 
     <!-- ===== SOBRE ===== -->
-    <section class="about section" id="about">
+    <section class="about section view" id="about">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">// sobre mim</span>
@@ -220,16 +238,6 @@
                     </ul>
                     <div class="about-actions">
                         <a href="mailto:albertofarias07@hotmail.com" class="btn btn-primary">Entre em contato</a>
-                        <a href="doc/Jose Alberto B Farias-Cs.pdf" download="Curriculo-Jose-Alberto-Farias.pdf"
-                            class="btn btn-outline btn-sm">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
-                                height="16">
-                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                                <polyline points="7 10 12 15 17 10" />
-                                <line x1="12" y1="15" x2="12" y2="3" />
-                            </svg>
-                            Currículo
-                        </a>
                     </div>
 
                     <!-- STATS -->
@@ -255,7 +263,7 @@
     </section>
 
     <!-- ===== TIMELINE ===== -->
-    <section class="timeline-section section" id="timeline">
+    <section class="timeline-section section view" id="timeline">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">// jornada</span>
@@ -315,7 +323,7 @@
     </section>
 
     <!-- ===== SKILLS ===== -->
-    <section class="skills section" id="skills">
+    <section class="skills section view" id="skills">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">// tecnologias</span>
@@ -414,7 +422,7 @@
     </section>
 
     <!-- ===== PROJETOS ===== -->
-    <section class="projects section" id="projects">
+    <section class="projects section view" id="projects">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">// projetos</span>
@@ -433,29 +441,29 @@
             <div class="projects-grid">
 
                 <!-- Projeto 1 -->
-                <article class="project-card reveal" data-category="ia frontend">
+                <article class="project-card reveal" data-category="react frontend">
                     <div class="project-image">
-                        <img src="img/cafe-aroma.png" alt="Site Cafeteria com Agente IA" class="project-img"
-                            loading="lazy" />
+                        <img src="img/minhas-tarefas.png" alt="Minhas Tarefas — organizador pessoal"
+                            class="project-img" loading="lazy" />
                         <div class="project-overlay">
-                            <a href="https://github.com/josealbertodeev/Site-Cafeteria-Agente-de-IA" target="_blank"
+                            <a href="https://github.com/josealbertodeev/lista-de-tarefas-app" target="_blank"
                                 rel="noopener noreferrer" class="project-link-btn">Ver código</a>
                         </div>
                     </div>
                     <div class="project-info">
                         <div class="project-tags">
-                            <span class="tag tag-ai">IA</span>
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JS</span>
+                            <span class="tag tag-react">React</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Tailwind</span>
+                            <span class="tag">Zustand</span>
                         </div>
-                        <h3 class="project-title">Site Cafeteria com Agente IA</h3>
-                        <p class="project-desc">Landing page de cafeteria com um agente de IA integrado ao chat do
-                            site, treinado para responder dúvidas sobre cardápio, horários e pedidos —
-                            automatizando o primeiro atendimento ao cliente sem depender de um atendente humano
-                            o tempo todo.</p>
+                        <h3 class="project-title">Minhas Tarefas</h3>
+                        <p class="project-desc">Organizador pessoal que reúne tarefas, quadro Kanban, calendário,
+                            metas e Pomodoro em um só lugar. Tem arrastar e soltar, gráficos de progresso,
+                            sistema de XP e conquistas, lembretes do navegador e backup em JSON — tudo salvo
+                            no navegador, sem cadastro nem servidor.</p>
                         <div class="project-links">
-                            <a href="https://site-cafeteria-agente-de-ia.vercel.app/" target="_blank"
+                            <a href="https://josealbertodeev.github.io/lista-de-tarefas-app/" target="_blank"
                                 rel="noopener noreferrer" class="project-github-link">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
                                     height="16">
@@ -505,40 +513,6 @@
                 <!-- Projeto 3 -->
                 <article class="project-card reveal" data-category="frontend">
                     <div class="project-image">
-                        <img src="img/tarefa.png" alt="Lista do que fazer" class="project-img" loading="lazy" />
-                        <div class="project-overlay">
-                            <a href="https://github.com/josealbertodeev/LIsta-do-que-fazer" target="_blank"
-                                rel="noopener noreferrer" class="project-link-btn">Ver código</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag tag-star">★ 2</span>
-                        </div>
-                        <h3 class="project-title">Lista do que fazer</h3>
-                        <p class="project-desc">Aplicação de gerenciamento de tarefas com JavaScript puro. Interface
-                            limpa, persistência em localStorage e UX fluida. 2 estrelas no GitHub.</p>
-                        <div class="project-links">
-                            <a href="https://l-ista-do-que-fazer.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                class="project-github-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
-                                    height="16">
-                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                Ver deploy
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Projeto 4 -->
-                <article class="project-card reveal" data-category="frontend">
-                    <div class="project-image">
                         <img src="img/iphone17.png" alt="iPhone 17 Clone" class="project-img" loading="lazy" />
                         <div class="project-overlay">
                             <a href="https://github.com/josealbertodeev/iphone-17" target="_blank"
@@ -569,7 +543,7 @@
                     </div>
                 </article>
 
-                <!-- Projeto 5 -->
+                <!-- Projeto 4 -->
                 <article class="project-card reveal" data-category="frontend">
                     <div class="project-image">
                         <img src="img/barbearia.png" alt="Barbearia Tratto" class="project-img" loading="lazy" />
@@ -602,7 +576,7 @@
                     </div>
                 </article>
 
-                <!-- Projeto 6 -->
+                <!-- Projeto 5 -->
                 <article class="project-card reveal" data-category="ia frontend">
                     <div class="project-image">
                         <img src="img/petshop.png" alt="Patinhas Pet Shop & Vet" class="project-img" loading="lazy" />
@@ -638,7 +612,7 @@
                     </div>
                 </article>
 
-                <!-- Projeto 7 -->
+                <!-- Projeto 6 -->
                 <article class="project-card reveal" data-category="frontend">
                     <div class="project-image">
                         <img src="img/bombeiro.png" alt="Bombeiro Profissional" class="project-img" loading="lazy" />
@@ -671,7 +645,7 @@
                     </div>
                 </article>
 
-                <!-- Projeto 8 -->
+                <!-- Projeto 7 -->
                 <article class="project-card reveal" data-category="frontend">
                     <div class="project-image">
                         <img src="img/fitness.png" alt="24H Fitness" class="project-img" loading="lazy" />
@@ -716,7 +690,7 @@
     </section>
 
     <!-- ===== IA NO DIA A DIA ===== -->
-    <section class="ia-daily section" id="ia-daily">
+    <section class="ia-daily section view" id="ia-daily">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">// ia no dia a dia</span>
@@ -793,7 +767,7 @@
     </section>
 
     <!-- ===== CONTATO / CTA ===== -->
-    <section class="cta-section" id="contact">
+    <section class="cta-section view" id="contact">
         <div class="cta-orb cta-orb-1"></div>
         <div class="cta-orb cta-orb-2"></div>
         <div class="container cta-content reveal">
@@ -856,12 +830,31 @@
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-text">
-                    Desenvolvido com <span class="heart">♥</span> por José Alberto Farias &mdash; 2026
-                </p>
+        <div class="footer-inner">
+            <span class="footer-text">&copy; 2026 José Alberto Farias &bull; Portfólio</span>
+            <div class="footer-socials">
+                <a href="https://github.com/josealbertodeev" target="_blank" rel="noopener noreferrer"
+                    class="footer-social footer-social--github" title="GitHub">
+                    <svg viewBox="0 0 24 24" width="14" height="14"><use href="#icon-github"></use></svg>
+                    <span>GitHub</span>
+                </a>
+                <span class="footer-sep">&bull;</span>
+                <a href="https://www.linkedin.com/in/josealbertofarias/" target="_blank" rel="noopener noreferrer"
+                    class="footer-social footer-social--linkedin" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" width="14" height="14"><use href="#icon-linkedin"></use></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <span class="footer-sep">&bull;</span>
+                <a href="https://wa.me/5511950354575" target="_blank" rel="noopener noreferrer"
+                    class="footer-social footer-social--whatsapp" title="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                        <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
             </div>
+            <span class="footer-rights">Todos os direitos reservados</span>
         </div>
     </footer>
 
@@ -888,7 +881,7 @@
 
     </div>
 
-    <script src="script.js?v=2" defer></script>
+    <script src="script.js?v=3" defer></script>
 </body>
 
 </html>

@@ -11,33 +11,15 @@
     ------------------------------------------------------------------ */
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navLinks');
 
     function onScroll() {
-        // blur effect
         if (window.scrollY > 20) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-
-        // active nav link
-        let current = '';
-        sections.forEach(function (sec) {
-            const offset = sec.offsetTop - 100;
-            if (window.scrollY >= offset) {
-                current = sec.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(function (link) {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
-        });
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -128,7 +110,7 @@
         return r + ',' + g + ',' + b;
     }
 
-    const COLORS = ['#06b6d4', '#a855f7', '#22d3ee', '#c084fc'];
+    const COLORS = ['#ffffff', '#e4e4e7', '#a1a1aa', '#71717a'];
 
     function Particle() {
         this.x = random(0, W);
@@ -169,7 +151,7 @@
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = 'rgba(6,182,212,' + opacity + ')';
+                    ctx.strokeStyle = 'rgba(255,255,255,' + opacity + ')';
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
@@ -179,7 +161,7 @@
 
     function init() {
         cancelAnimationFrame(animFrame);
-        const count = Math.min(Math.floor((W * H) / 12000), 90);
+        const count = Math.min(Math.floor((W * H) / 16000), 90);
         particles = Array.from({ length: count }, function () { return new Particle(); });
         loop();
     }
@@ -222,17 +204,58 @@
     revealEls.forEach(function (el) { observer.observe(el); });
 
     /* ------------------------------------------------------------------
-       5. SMOOTH ANCHOR SCROLL (override default for offset)
+       5. ROTEADOR DE VIEWS — uma seção por vez, sem scroll longo
     ------------------------------------------------------------------ */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    const views = document.querySelectorAll('.view');
+    const viewExtras = document.querySelectorAll('[data-view]');
+    const DEFAULT_VIEW = 'hero';
+
+    function viewExists(id) {
+        return !!(id && document.getElementById(id) &&
+            document.getElementById(id).classList.contains('view'));
+    }
+
+    function showView(id, push) {
+        if (!viewExists(id)) id = DEFAULT_VIEW;
+
+        views.forEach(function (v) { v.classList.toggle('active', v.id === id); });
+        viewExtras.forEach(function (el) {
+            el.classList.toggle('active', el.getAttribute('data-view') === id);
+        });
+
+        navLinks.forEach(function (link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+
+        if (push && ('#' + id) !== window.location.hash) {
+            history.pushState({ view: id }, '', id === DEFAULT_VIEW ? '#' : '#' + id);
+        }
+
+        // o navegador tenta rolar sozinho ate o elemento do hash depois que a view
+        // aparece, entao reforcamos o topo no proximo frame
+        window.scrollTo(0, 0);
+        requestAnimationFrame(function () { window.scrollTo(0, 0); });
+        onScroll();
+    }
+
+    // qualquer link interno (#) navega entre views, inclusive os botões do hero e do CTA
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (!target) return;
+            const id = this.getAttribute('href').slice(1);
+            if (!viewExists(id)) return;
             e.preventDefault();
-            const top = target.getBoundingClientRect().top + window.scrollY - 70;
-            window.scrollTo({ top: top, behavior: 'smooth' });
+            showView(id, true);
         });
     });
+
+    window.addEventListener('popstate', function () {
+        showView(window.location.hash.slice(1), false);
+    window.addEventListener('load', function () { window.scrollTo(0, 0); });
+    });
+
+    showView(window.location.hash.slice(1), false);
 
     /* ------------------------------------------------------------------
        6. SKILL CARDS — staggered reveal delay
@@ -265,23 +288,13 @@
     }
 
     /* ------------------------------------------------------------------
-       9. SCROLL PROGRESS BAR + BACK TO TOP visibility
+       9. BACK TO TOP visibility
     ------------------------------------------------------------------ */
-    const scrollProg = document.getElementById('scroll-prog');
     const backToTop = document.getElementById('back-to-top');
 
     function updateScrollUI() {
-        const scrollY = window.scrollY;
-        const docH = document.documentElement.scrollHeight - window.innerHeight;
-
-        // barra de progresso
-        if (scrollProg) {
-            scrollProg.style.width = (docH > 0 ? (scrollY / docH) * 100 : 0) + '%';
-        }
-
-        // botão voltar ao topo
         if (backToTop) {
-            backToTop.classList.toggle('show', scrollY > 400);
+            backToTop.classList.toggle('show', window.scrollY > 400);
         }
     }
 
