@@ -1,14 +1,6 @@
-/* ===================================================================
-   PORTFOLIO — José Alberto Farias
-   script.js — particles, typing effect, scroll reveal, navbar, menu
-   =================================================================== */
-
 (function () {
     'use strict';
 
-    /* ------------------------------------------------------------------
-       1. NAVBAR — sticky blur + active link highlight
-    ------------------------------------------------------------------ */
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     const hamburger = document.getElementById('hamburger');
@@ -24,14 +16,12 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // hamburger toggle
     hamburger.addEventListener('click', function () {
         const isOpen = navMenu.classList.toggle('open');
         hamburger.classList.toggle('open', isOpen);
         hamburger.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // close menu on link click
     navMenu.addEventListener('click', function (e) {
         if (e.target.classList.contains('nav-link')) {
             navMenu.classList.remove('open');
@@ -40,9 +30,6 @@
         }
     });
 
-    /* ------------------------------------------------------------------
-       2. TYPING EFFECT — hero subtitle
-    ------------------------------------------------------------------ */
     const words = [
         'Front-End Jr',
         'React.js',
@@ -86,9 +73,6 @@
 
     type();
 
-    /* ------------------------------------------------------------------
-       3. CANVAS PARTICLES — hero background
-    ------------------------------------------------------------------ */
     const canvas = document.getElementById('particlesCanvas');
     const ctx = canvas.getContext('2d');
     let W, H, particles, animFrame;
@@ -173,7 +157,6 @@
         animFrame = requestAnimationFrame(loop);
     }
 
-    // pause particles when tab hidden (performance)
     document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
             cancelAnimationFrame(animFrame);
@@ -185,9 +168,6 @@
     window.addEventListener('resize', resize, { passive: true });
     resize();
 
-    /* ------------------------------------------------------------------
-       4. SCROLL REVEAL — IntersectionObserver
-    ------------------------------------------------------------------ */
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(
         function (entries) {
@@ -203,9 +183,6 @@
 
     revealEls.forEach(function (el) { observer.observe(el); });
 
-    /* ------------------------------------------------------------------
-       5. ROTEADOR DE VIEWS — uma seção por vez, sem scroll longo
-    ------------------------------------------------------------------ */
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
     const views = document.querySelectorAll('.view');
@@ -233,14 +210,11 @@
             history.pushState({ view: id }, '', id === DEFAULT_VIEW ? '#' : '#' + id);
         }
 
-        // o navegador tenta rolar sozinho ate o elemento do hash depois que a view
-        // aparece, entao reforcamos o topo no proximo frame
         window.scrollTo(0, 0);
         requestAnimationFrame(function () { window.scrollTo(0, 0); });
         onScroll();
     }
 
-    // qualquer link interno (#) navega entre views, inclusive os botões do hero e do CTA
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
             const id = this.getAttribute('href').slice(1);
@@ -257,23 +231,14 @@
 
     showView(window.location.hash.slice(1), false);
 
-    /* ------------------------------------------------------------------
-       6. SKILL CARDS — staggered reveal delay
-    ------------------------------------------------------------------ */
     document.querySelectorAll('.skill-card').forEach(function (card, i) {
         card.style.transitionDelay = (i * 0.06) + 's';
     });
 
-    /* ------------------------------------------------------------------
-       7. PROJECT CARDS — staggered reveal delay
-    ------------------------------------------------------------------ */
     document.querySelectorAll('.project-card').forEach(function (card, i) {
         card.style.transitionDelay = (i * 0.1) + 's';
     });
 
-    /* ------------------------------------------------------------------
-       8. LOADER — esconder após carregamento completo
-    ------------------------------------------------------------------ */
     const loader = document.getElementById('loader');
     if (loader) {
         window.addEventListener('load', function () {
@@ -281,15 +246,12 @@
                 loader.classList.add('done');
             }, 1900);
         });
-        // fallback: remover após 4s caso 'load' demore
+
         setTimeout(function () {
             loader.classList.add('done');
         }, 4000);
     }
 
-    /* ------------------------------------------------------------------
-       9. BACK TO TOP visibility
-    ------------------------------------------------------------------ */
     const backToTop = document.getElementById('back-to-top');
 
     function updateScrollUI() {
@@ -299,7 +261,7 @@
     }
 
     window.addEventListener('scroll', updateScrollUI, { passive: true });
-    updateScrollUI(); // estado inicial
+    updateScrollUI();
 
     if (backToTop) {
         backToTop.addEventListener('click', function () {
@@ -307,9 +269,6 @@
         });
     }
 
-    /* ------------------------------------------------------------------
-       10. STATS COUNTER — anima números no About
-    ------------------------------------------------------------------ */
     var statEls = document.querySelectorAll('.stat-number[data-target]');
     if (statEls.length) {
         var statsObserver = new IntersectionObserver(function (entries) {
@@ -330,9 +289,6 @@
         statEls.forEach(function (el) { statsObserver.observe(el); });
     }
 
-    /* ------------------------------------------------------------------
-       11. FILTRO DE PROJETOS
-    ------------------------------------------------------------------ */
     var filterBtns = document.querySelectorAll('.filter-btn');
     var projectCards = document.querySelectorAll('.project-card[data-category]');
 
@@ -351,9 +307,6 @@
         });
     });
 
-    /* ------------------------------------------------------------------
-       12. 3D TILT — cards de projeto (somente desktop)
-    ------------------------------------------------------------------ */
     if (!('ontouchstart' in window)) {
         document.querySelectorAll('.project-card').forEach(function (card) {
             card.addEventListener('mousemove', function (e) {
@@ -377,5 +330,4 @@
             });
         });
     }
-
 })();
