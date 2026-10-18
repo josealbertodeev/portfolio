@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/168390396?v=4" />
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
-    <link rel="stylesheet" href="styles.css?v=13" />
+    <link rel="stylesheet" href="styles.css?v=14" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -906,15 +906,6 @@
     </script>
     <script>
         (function () {
-            function flipToLeft(el) {
-                if (!el || el.dataset.movedLeft) return;
-                if (el.style.right && el.style.right !== 'auto') {
-                    el.style.left = el.style.right;
-                    el.style.right = 'auto';
-                    el.dataset.movedLeft = 'true';
-                }
-            }
-
             function alignWithWhatsApp() {
                 var wa = document.querySelector('.wa-float');
                 var btn = window.GPT_CHAT_IFRAME_ELEMENTS && window.GPT_CHAT_IFRAME_ELEMENTS.button;
@@ -944,8 +935,6 @@
 
             var observer = new MutationObserver(function () {
                 if (window.GPT_CHAT_IFRAME_ELEMENTS) {
-                    flipToLeft(window.GPT_CHAT_IFRAME_ELEMENTS.button);
-                    flipToLeft(window.GPT_CHAT_IFRAME_ELEMENTS.containerIframe);
                     setupAssistantButton();
                     setupAssistantPanel();
                 }
