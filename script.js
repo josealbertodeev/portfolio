@@ -311,22 +311,8 @@
         document.querySelectorAll('.project-card').forEach(function (card) {
             card.addEventListener('mousemove', function (e) {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const cx = rect.width / 2;
-                const cy = rect.height / 2;
-                const rotX = ((y - cy) / cy) * -10;
-                const rotY = ((x - cx) / cx) * 10;
-                card.style.transform =
-                    'perspective(800px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translateY(-8px)';
-            });
-
-            card.addEventListener('mouseleave', function () {
-                card.style.transform = '';
-                card.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                setTimeout(function () {
-                    card.style.transition = '';
-                }, 500);
+                card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+                card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
             });
         });
     }

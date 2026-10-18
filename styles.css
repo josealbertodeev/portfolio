@@ -927,6 +927,25 @@ button {
     flex-direction: column;
 }
 
+.project-card {
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.12), transparent 60%);
+    transition: opacity var(--transition);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
 .project-card:hover {
     border-color: rgba(255, 255, 255, 0.3);
     background: var(--bg-card-hover);
