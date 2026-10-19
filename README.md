@@ -52,6 +52,6 @@ Abra o `index.html` no navegador (ou use a extensão Live Server do VS Code).
 
 ## 📬 Contato
 
-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/linkedin/linkedin-original.svg" width="16" height="16" alt="LinkedIn" /> LinkedIn: [josealbertofarias](https://www.linkedin.com/in/josealbertofarias/)
-- <img src="https://cdn.simpleicons.org/github/8b949e" width="16" height="16" alt="GitHub" /> GitHub: [josealbertodeev](https://github.com/josealbertodeev)
-- <img src="https://cdn.simpleicons.org/whatsapp/25D366" width="16" height="16" alt="WhatsApp" /> WhatsApp: [conversar](https://wa.me/5511950354575)
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/linkedin/linkedin-original.svg" width="16" height="16" alt="LinkedIn " /> LinkedIn:  [josealbertofarias](https://www.linkedin.com/in/josealbertofarias/)
+- <img src="https://cdn.simpleicons.org/github/8b949e" width="16" height="16" alt="GitHub " /> GitHub:  [josealbertodeev](https://github.com/josealbertodeev)
+- <img src="https://cdn.simpleicons.org/whatsapp/25D366" width="16" height="16" alt="WhatsApp " /> WhatsApp:  [conversar](https://wa.me/5511950354575)
