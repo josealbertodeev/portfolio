@@ -31,8 +31,9 @@
     });
 
     const words = [
-        'Front-End Jr',
+        'Full Stack Jr',
         'React.js',
+        'Node.js',
         'TypeScript',
         'JavaScript ES6+',
         'IA & Automação',
@@ -241,15 +242,17 @@
 
     const loader = document.getElementById('loader');
     if (loader) {
-        window.addEventListener('load', function () {
-            setTimeout(function () {
+        if (document.readyState === 'complete') {
+            loader.classList.add('done');
+        } else {
+            window.addEventListener('load', function () {
                 loader.classList.add('done');
-            }, 1900);
-        });
+            });
+        }
 
         setTimeout(function () {
             loader.classList.add('done');
-        }, 4000);
+        }, 2500);
     }
 
     const backToTop = document.getElementById('back-to-top');
@@ -298,7 +301,7 @@
             btn.classList.add('active');
             var filter = btn.getAttribute('data-filter');
             projectCards.forEach(function (card) {
-                if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                if (filter === 'all' || card.getAttribute('data-category').split(' ').includes(filter)) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
