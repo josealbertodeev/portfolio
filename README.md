@@ -26,6 +26,7 @@ Site estático, responsivo e sem frameworks, feito com HTML, CSS e JavaScript pu
 | Projeto | Repositório | Demo |
 | --- | --- | --- |
 | DevBurger | [💻 interface](https://github.com/josealbertodeev/devburger-interface) · [⚙️ API](https://github.com/josealbertodeev/dev-burger-api) | - |
+| Cadastro de Usuários | [💻 interface](https://github.com/josealbertodeev/cadastro-usuarios-front-end) · [⚙️ API](https://github.com/josealbertodeev/api-cadastro-usuario-backend) | [🌍 demo](https://josealbertodeev.github.io/cadastro-usuarios-front-end/) |
 | Dev Movies | [💻 código](https://github.com/josealbertodeev/dev-movies) | [🌍 demo](https://dev-movies-opal.vercel.app) |
 | Minhas Tarefas | [💻 código](https://github.com/josealbertodeev/lista-de-tarefas-app) | [🌍 demo](https://josealbertodeev.github.io/lista-de-tarefas-app/) |
 | TechStore | [💻 código](https://github.com/josealbertodeev/projeto-ecomerce) | [🌍 demo](https://projeto-ecomerce.vercel.app) |
